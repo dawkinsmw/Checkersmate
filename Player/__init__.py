@@ -1,0 +1,1 @@
+from Checkersmate.Player.Random import random_player

@@ -2,7 +2,7 @@ from Checkersmate.Display import print_turn, print_piece, print_board
 
 class Game():
     def __init__(self,
-    board=[1,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,-1,-1,-1,-1,-1,-1,-1,-1],
+    board=[1,1,1,1,1,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1],
     turn=1,
     msc=0
     ):
@@ -17,3 +17,7 @@ class Game():
 
     def copy_game(self):
         return Game(self.board,self.turn,self.msc)
+
+    def change_turn(self):
+        self.turn = -1 * self.turn
+        self.board = [-p for p in self.board[::-1]]
