@@ -1,4 +1,4 @@
-from Checkersmate.Display import print_turn, print_piece, print_board
+from checkersmate.display import print_turn, print_piece, print_board
 
 class Game():
     def __init__(self,
