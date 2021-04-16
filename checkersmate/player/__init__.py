@@ -1,1 +1,1 @@
-from checkersmate.Player.Random import random_player
+from checkersmate.player.random import random_player
