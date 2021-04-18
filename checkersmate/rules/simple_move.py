@@ -29,6 +29,6 @@ def legal_moves_given_square(game,i):
 def legal_moves(game):
     legal_moves = []
     for i in range(32):
-        legal_moves.extend(legal_simple_moves_given_square(game,i))
+        legal_moves.extend(legal_moves_given_square(game,i))
     return legal_moves
 

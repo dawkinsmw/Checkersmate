@@ -1,14 +1,14 @@
 from checkersmate.rules.utils import row_diff
 
 # Jumps
-def update_jump(game,i,s,j):
+def update_board(game,i,s,j):
     new_board = game.board.copy()
     new_board[i] = 0
     new_board[s] = 0
     new_board[j] = game.board[i]
     return new_board
 
-def potential_jumps(game,i):
+def legal_moves_given_square(game,i):
     legal_jumps = []
     base = i
     left,right,back_left,back_right = i+7,i+9,i-9,i-7
@@ -30,7 +30,7 @@ def potential_jumps(game,i):
                     legal_jumps.append(update_jump(game,base,back_right_skip,back_right)) 
         return legal_jumps
 
-def legal_jumps(game):
+def legal_moves(game):
     legal_jumps_moves = []
     for i in range(32):
         legal_jumps_moves.extend(potential_simple_move(game,i))
