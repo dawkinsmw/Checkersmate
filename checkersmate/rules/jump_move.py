@@ -7,7 +7,10 @@ def update_board(game,i,s,j):
     new_board = game.board.copy()
     new_board[i] = 0
     new_board[s] = 0
-    new_board[j] = game.board[i]
+    if(j>=28):
+        new_board[j] = 2
+    else:
+        new_board[j] = game.board[i]
     return new_board
 
 def legal_moves_given_square(game,i):
