@@ -10,5 +10,6 @@ if __name__ == '__main__':
         # potential_states = legal_moves(current_state) 
         # new_state = players[current_state.turn].choose_move(potential_new_states)
         new_state = current_state
+        result=1
         # state.msc update
         # current_state = new_state.change_turn()
