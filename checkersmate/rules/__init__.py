@@ -13,3 +13,5 @@ def legal_moves(game):
         return False, legal_moves
     else:
         return True, legal_moves
+
+

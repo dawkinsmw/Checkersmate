@@ -3,13 +3,9 @@ from checkersmate.game import Game
 
 if __name__ == '__main__':
     # players = {1:Player(),-1:Player()}
-    result = 0
-    current_state = Game()
-    while result==0:
-        print(current_state)
-        # potential_states = legal_moves(current_state) 
-        # new_state = players[current_state.turn].choose_move(potential_new_states)
-        new_state = current_state
-        result=1
-        # state.msc update
-        # current_state = new_state.change_turn()
+    results = []
+    for i in range(500):
+        g = Game(silent=True)
+        results.append(g.play())
+    
+    print(results)

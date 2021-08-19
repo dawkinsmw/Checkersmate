@@ -12,7 +12,9 @@ class TestJumpMove(unittest.TestCase):
     def jump_move_test(self,board,square,correct_result):
         print()
         state = Game(sample_boards[board])
-        produced_result = jm.legal_moves_given_square(state,square)
+        produced_result = jm.legal_moves_given_square(state.board,square)
+        if(len(produced_result)!=len(correct_result)):
+            print(produced_result)
         self.assertEqual(len(produced_result),len(correct_result),"incorrect number of legal simple moves")
         for i in range(len(correct_result)):
             if (produced_result[i]!=correct_result[i]):
@@ -59,7 +61,7 @@ class TestJumpMove(unittest.TestCase):
     def test_double_v_single_capture_13(self):
         correct_result = [
             [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,-1, 0, 1, 0, 0, 0, 0, 0, 0,-1, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2]
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2]
         ]
         self.jump_move_test("double_v_single_capture",13,correct_result)
 
