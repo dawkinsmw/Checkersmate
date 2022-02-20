@@ -1,3 +1,7 @@
 .vscode/
 docs/
 __pycache__
+data/output/
+.env
+data/
+hp_move.txt

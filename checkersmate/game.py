@@ -1,6 +1,7 @@
 from checkersmate.display import print_turn, print_piece, print_board
 from checkersmate.player.random import random_player
 from checkersmate.rules import legal_moves
+from time import sleep
 
 class Game():
     def __init__(self,
@@ -22,7 +23,7 @@ class Game():
         self.output_file = output
         if(self.output_file is not None):
             import pandas as pd
-            self.output_df = pd.DataFrame(columns=[i for i in range(32)])
+            self.output_df = pd.DataFrame(columns=[i for i in range(32)] + ["result"])
 
     def __str__(self):
 	    return f''' ___________Checkersmate____________
@@ -40,6 +41,8 @@ class Game():
         capture_flag, potential_boards = legal_moves(self) 
         if(potential_boards==[]): return -1
         chosen_board = self.players[self.turn].select_move(potential_boards)
+        if(self.output_file):
+            self.output_df.loc[len(self.output_df)] = chosen_board + [self.turn]
         self.board = chosen_board
         self.change_turn()
         if(capture_flag):
@@ -55,16 +58,18 @@ class Game():
         result = 1
         while(result==1): 
             result = self.next_move()
-            if(not self.silent and result==1): print(self)
-            if(self.output and result==1):
-                self.output_df.loc[len(self.output_df)] = self.board + [None]
+            if(not self.silent and result==1): 
+                sleep(1)
+                print(self)
         if(result==-1): 
             if(not self.silent): print(f"!!{print_turn(-self.turn)} wins!!")
-            self.output_df['result'] = [self.turn*(2*(x%2-0.5)) for x in range(len(self.output_df))]
-            self.output_df.to_csv(self.output_file)
+            if(self.output_file):
+                self.output_df['result'] = self.output_df['result'] * (-self.turn) 
+                self.output_df.to_csv(self.output_file,header=False,index=False, mode='a')
             return -self.turn
         if(result==0): 
             if(not self.silent): print(f"__drawn game__")
-            self.output_df['result'] = 0
-            self.output_df.to_csv(self.output_file)
+            if(self.output_file):
+                self.output_df['result'] = 0
+                self.output_df.to_csv(self.output_file,header=False,index=False, mode='a')
             return 0
