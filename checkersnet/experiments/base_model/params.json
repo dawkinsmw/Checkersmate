@@ -1,0 +1,13 @@
+{
+    "learning_rate": 1e-3,
+    "num_epochs": 50,
+
+    "first_file":10,
+    "last_file":20,
+    "lines_per_file":500000,
+    "batch_size": 10000,
+
+    "test_games": 500,
+
+    "save_summary_steps": 100
+}

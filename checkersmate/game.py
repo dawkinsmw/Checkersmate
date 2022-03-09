@@ -30,7 +30,7 @@ class Game():
     {print_turn(self.turn)}'s turn 
 {print_board(self)}'''	
 
-    def copy_game(self):
+    def copy_game(self): 
         return Game(self.board,self.turn,self.msc)
 
     def change_turn(self):
